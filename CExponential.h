@@ -1,3 +1,10 @@
+/*! @file CPower.h
+    @brief Derived class implementing a exponential function
+    @author Mattia De Lorenzi e Matteo Abrate
+
+    Details.
+*/
+
 #ifndef EXPONENTIAL_H
 #define EXPONENTIAL_H
 
@@ -10,29 +17,34 @@ using namespace std;
 class Exponential : public Function {
 private:
     double b_coeff;  // base > 0
-    double k_coeff;  // multiplicative constant
-    double c_coeff;  // exponent multiplier
+    double k_coeff;  // costante di moltiplicazione
+    double c_coeff;  // moltiplicatore dell'esponente
 
 public:
-    // Costruttori e distruttore
-    Exponential();
-    Exponential(double b, double k, double c);
-    Exponential(const Exponential& e);
-    ~Exponential();
+    /// @name CONSTRUCTORs and DESTRUCTOR 
+    /// @{
+    Exponential();										// costruttore di default
+    Exponential(double b, double k, double c);			// costruttore con parametri
+    Exponential(const Exponential& e);					// costruttore di copia
+    ~Exponential();										// distruttore
+	/// @}
 
-    // Operatori
-    Exponential& operator=(const Exponential& e);
-    bool operator==(const Exponential& e);
-
-    // Metodi
-    double GetValue(double in) const override;
-    void Dump() override;
+    /// @name OPERATORS 
+	/// @{
+    Exponential& operator=(const Exponential& e);		// operatore di assegnazione
+    bool operator==(const Exponential& e);				// operatore di confronto
+	/// @}
 
     void SetParameters(double b, double k, double c);
+    double GetValue(double in) const override;
 
-    // Messaggi di errore
+    /// @name DEBUG and SERIALIZATION 
+	/// @{
     void ErrorMessage(const char* string);
     void WarningMessage(const char* string);
+	void Dump() override;
+	/// @}
+
 };
 
 #endif

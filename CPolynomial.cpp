@@ -1,6 +1,6 @@
 /*! @file CPolynomial.cpp
     @brief Implementation of Polynomial class 
-    @author Mattia De Lorenzi
+    @author Mattia De Lorenzi e Matteo Abrate
 
     Details.
 */ 
@@ -14,6 +14,8 @@ Polynomial::Polynomial() {
 }
 
 /// @brief constructor
+///	@param coefficients array with the coefficients (format: c0+c1*x+ ...)
+///	@param size size of the array
 Polynomial::Polynomial(const double* coefficients, int size) {
     coeff = nullptr;
     SetPolynomial(coefficients, size);
@@ -103,6 +105,8 @@ bool Polynomial::operator==(const Polynomial& p) {
 }
 
 /// @brief sets the coefficients of the polynomial 
+///	@param coefficients array with the coefficients (format: c0+c1*x+ ...)
+///	@param size size of the array
 void Polynomial::SetPolynomial(const double* coefficients, int size) {
     if (size < 1) {
         ErrorMessage("SetPolynomial: the degree of the Polynomial cannot be negative");
@@ -122,7 +126,9 @@ void Polynomial::SetPolynomial(const double* coefficients, int size) {
         coeff[i] = coefficients[i];
 }
 
-/// @brief returns the value of the function, given an input 
+/// @brief returns the value of the function, given an input
+///	@param in the input
+///	@return the value of the function
 double Polynomial::GetValue(double in) const {
     if (coeff == nullptr || degree < 0)
         return 0.0;
@@ -147,12 +153,14 @@ void Polynomial::Reset() {
     }
 }
 
-/// @brief writes an error message 
+/// @brief writes an error message
+/// @param string message to be printed 
 void Polynomial::ErrorMessage(const char *string) {
     std::cout << "\nERROR -- Polynomial -- " << string << std::endl;
 }
 
 /// @brief writes a warning message 
+/// @param string message to be printed
 void Polynomial::WarningMessage(const char *string) {
     std::cout << "\nWARNING -- Polynomial -- " << string << std::endl;
 }

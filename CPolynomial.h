@@ -1,6 +1,6 @@
 /*! @file CPolynomial.h
     @brief A class for polynomial functions 
-    @author Mattia De Lorenzi
+    @author Mattia De Lorenzi e Matteo abrate
 
     Details.
 */ 
@@ -11,11 +11,11 @@
 #include <iostream>
 #include <cmath>
 #include <cstring>
-#include "CFunction.h"  // Include la base class
+#include "CFunction.h" 
 
 using namespace std;
 
-class Polynomial : public Function {  // Ereditarietà pubblica
+class Polynomial : public Function {
 private:
     double* coeff;
     int degree;
@@ -38,14 +38,14 @@ public:
     /// @}
 
     void SetPolynomial(const double* coefficients, int size);
-    double GetValue(double in) const override;  // override del metodo virtuale
+    double GetValue(double in) const override;
     void Reset();
 
     /// @name DEBUG and SERIALIZATION 
     /// @{
     void ErrorMessage(const char *string); 
     void WarningMessage(const char *string);
-    void Dump() override;  // override del metodo virtuale
+    void Dump() override;
     /// @}
 };
 
